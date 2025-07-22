@@ -21,7 +21,20 @@ docker run -d \
   -v ${PWD}/wg0.conf:/etc/wireguard/wg0.conf:ro \
   -p 51820:51820/udp \
   --ip 192.168.10.2 \
-  tokikuch/gateway-container:latest
+  kinesisorg/gateway-container:latest
 
 # To use this network, point 192.168.10.2 as the default gateway.
 ```
+
+## How to build an image
+
+docker rmi kinesisorg/gateway-container:latest; \
+docker build -t kinesisorg/gateway-container:latest .
+
+docker run -d \
+  --name home-gateway \
+  --cap-add=NET_ADMIN \
+  --device /dev/net/tun \
+  --sysctl net.ipv4.ip_forward=1 \
+  -v ${PWD}/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro \
+  kinesisorg/gateway-container:latest
