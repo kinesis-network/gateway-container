@@ -1,0 +1,8 @@
+Port 22
+PermitRootLogin no
+PasswordAuthentication yes
+AllowTcpForwarding yes
+GatewayPorts yes
+PermitOpen any
+PermitTTY no
+X11Forwarding no

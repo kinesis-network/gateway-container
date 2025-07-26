@@ -11,5 +11,4 @@ if [ -f /etc/wireguard/${IFACE_NAME}.conf ]; then
   wg-quick up /etc/wireguard/${IFACE_NAME}.conf
 fi
 
-# Stay alive
-tail -f /dev/null
+/usr/sbin/sshd -D
