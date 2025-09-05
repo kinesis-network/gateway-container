@@ -28,8 +28,9 @@ docker run -d \
 
 ## How to build an image
 
+```
 docker rmi kinesisorg/gateway-container:latest; \
-docker build -t kinesisorg/gateway-container:latest .
+  docker build -t kinesisorg/gateway-container:latest .
 
 docker run -d \
   --name home-gateway \
@@ -37,4 +38,6 @@ docker run -d \
   --device /dev/net/tun \
   --sysctl net.ipv4.ip_forward=1 \
   -v ${PWD}/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro \
+  -v ${PWD}/wg0.conf:/etc/wireguard/wg0.conf:ro \
   kinesisorg/gateway-container:latest
+```
