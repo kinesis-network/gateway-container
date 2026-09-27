@@ -2,6 +2,9 @@
 
 ## How to launch a gateway container
 
+Copy `wg0.conf.example` to `wg0.conf` and fill in the keys and peer endpoint. `wg0.conf`
+holds a private key, so it is git-ignored; never commit it.
+
 ```
 # Create a new docker bridge
 docker network create \
