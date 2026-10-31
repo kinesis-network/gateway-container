@@ -11,7 +11,7 @@ RUN apt-get update \
 ENV SSHAUTH=password
 ENV IFACE_NAME=wg0
 
-RUN useradd -m -s /bin/bash ssh-agent \
+RUN useradd -m -s /usr/sbin/nologin ssh-agent \
   && echo "ssh-agent:${SSHAUTH}" | chpasswd
 
 COPY sshd_config /etc/ssh/sshd_config

@@ -15,4 +15,9 @@ if [ -f /etc/wireguard/${IFACE_NAME}.conf ]; then
   wg-quick up /etc/wireguard/${IFACE_NAME}.conf
 fi
 
+# A per-gateway password, when the deployer passes one; the image's default otherwise.
+if [ -n "${SSH_PASSWORD:-}" ]; then
+  echo "ssh-agent:${SSH_PASSWORD}" | chpasswd
+fi
+
 /usr/sbin/sshd -D
