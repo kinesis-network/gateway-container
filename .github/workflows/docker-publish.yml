@@ -3,7 +3,6 @@ name: Docker
 on:
   push:
     branches: [ "main" ]
-    tags: [ 'v*.*.*' ] # optional: only publish semver tags
 
 env:
   REGISTRY: ghcr.io
