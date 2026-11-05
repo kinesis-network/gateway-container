@@ -1,8 +1,15 @@
 Port 22
 PermitRootLogin no
 PasswordAuthentication yes
-AllowTcpForwarding yes
+# The only client is dynamo-admin, which asks for remote forwards (tcpip-forward on 0.0.0.0, so they
+# answer on wg0) and nothing else: no shell, no command, no local forwards. Anyone else who reaches
+# this port with the shared credential gets no further than that.
+AllowTcpForwarding remote
 GatewayPorts yes
-PermitOpen any
+PermitOpen none
+AllowAgentForwarding no
+AllowStreamLocalForwarding no
+PermitTunnel no
 PermitTTY no
 X11Forwarding no
+ForceCommand /usr/sbin/nologin
